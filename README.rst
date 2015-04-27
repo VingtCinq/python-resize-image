@@ -1,4 +1,4 @@
-A python package for easily resing image
+A python package to easily resize images
 ========================================
 
 This package gives function for easily resizing images.
