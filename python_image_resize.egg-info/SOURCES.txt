@@ -1,0 +1,9 @@
+README.rst
+setup.py
+imageresize/__init__.py
+imageresize/imageresize.py
+python_image_resize.egg-info/PKG-INFO
+python_image_resize.egg-info/SOURCES.txt
+python_image_resize.egg-info/dependency_links.txt
+python_image_resize.egg-info/requires.txt
+python_image_resize.egg-info/top_level.txt

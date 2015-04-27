@@ -1,2 +1,3 @@
 venv
 *.pyc
+.egg_info
