@@ -15,7 +15,6 @@ The following functions are supported :
 Here is a full example :
 
 
-```python
     from imageresize import imageresize
     from cStringIO import StringIO
     from PIL import Image
@@ -50,6 +49,4 @@ Here is a full example :
     img = Image.open(test_img)
     img = imageresize.resize_thumbnail(img, [200, 200])
     img.save('test-image-thumbnail.jpeg', img.format)
-
-```
 
