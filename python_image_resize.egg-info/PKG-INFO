@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: python-image-resize
-Version: 0.0.1.dev1
+Version: 0.0.1
 Summary: A Small python package to easily resize images
 Home-page: https://github.com/charlesthk/image-tools
 Author: Charles TISSIER
@@ -9,7 +9,7 @@ License: MIT
 Description: UNKNOWN
 Keywords: image resizing python
 Platform: UNKNOWN
-Classifier: Development Status :: 1 - Planning
+Classifier: Development Status :: 5 - Production/Stable
 Classifier: Intended Audience :: Developers
 Classifier: Topic :: Software Development :: Libraries :: Python Modules
 Classifier: License :: OSI Approved :: MIT License
