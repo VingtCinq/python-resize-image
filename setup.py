@@ -13,14 +13,14 @@ here = path.abspath(path.dirname(__file__))
 
 setup(
     name='python-image-resize',
-    version='0.0.1.dev1',
+    version='0.0.1',
     description='A Small python package to easily resize images',
     url='https://github.com/charlesthk/image-tools',
     author='Charles TISSIER',
     author_email='charles@vingtcinq.io',
     license='MIT',
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',
