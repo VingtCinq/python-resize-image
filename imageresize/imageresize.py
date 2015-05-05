@@ -1,6 +1,6 @@
 from __future__ import division
 from PIL import Image
-from imageexceptions import ImageSizeError
+import imageexceptions
 
 def crop(image, size):
     """
@@ -12,7 +12,7 @@ def crop(image, size):
     image = image.copy()
     old_size = image.size
     if old_size[0] <= size[0] or old_size[1] <= size[1]:
-        raise ImageSizeError(old_size, size)
+        raise imageexceptions.ImageSizeError(old_size, size)
     left = int((old_size[0] - size[0])/2)
     top = int((old_size[1] - size[1])/2)
     right = int(old_size[0] - left)
@@ -38,7 +38,7 @@ def resize_cover(image, size):
         img.format = img_format
         return img
     else:
-        raise ImageSizeError(img_size, size)
+        raise imageexceptions.ImageSizeError(img_size, size)
 
 def resize_contain(image, size):
     """
@@ -71,7 +71,7 @@ def resize_by_width(image, width):
         img.format = img_format
         return img
     else:
-        raise ImageSizeError(img_size[0], width)
+        raise imageexceptions.ImageSizeError(img_size[0], width)
 
 def resize_by_height(image, height):
     """
@@ -88,7 +88,7 @@ def resize_by_height(image, height):
         img.format = img_format
         return img
     else:
-        raise ImageSizeError(img_size[1], height)
+        raise imageexceptions.ImageSizeError(img_size[1], height)
 
 def resize_thumbnail(image, size):
     """
