@@ -1,9 +1,18 @@
 from __future__ import division
 from PIL import Image
+from imageexceptions import ImageSizeError
 
 def crop(image, size):
+    """
+    Crop the image with a centered rectangle of the specified size
+    image: a Pillow image instance
+    size: a list of two integers [width, height]
+    """
     img_format = image.format
+    image = image.copy()
     old_size = image.size
+    if old_size[0] <= size[0] or old_size[1] <= size[1]:
+        raise ImageSizeError(old_size, size)
     left = int((old_size[0] - size[0])/2)
     top = int((old_size[1] - size[1])/2)
     right = int(old_size[0] - left)
@@ -15,7 +24,8 @@ def crop(image, size):
 def resize_cover(image, size):
     """
     Resize image according to size.
-    size is a list of two values, respectively [width, height]
+    image: a Pillow image instance
+    size: a list of two integers [width, height]
     """
     img_format = image.format
     img = image.copy()
@@ -28,30 +38,29 @@ def resize_cover(image, size):
         img.format = img_format
         return img
     else:
-        raise ValueError(u"Your image is too small. Minimum size: %s" % size)
+        raise ImageSizeError(img_size, size)
 
 def resize_contain(image, size):
     """
     Resize image according to size.
-    size is a list of two values, respectively [width, height]
+    image: a Pillow image instance
+    size: a list of two integers [width, height]
     """
     img_format = image.format
     img = image.copy()
     img_size = img.size
-    if (img_size[0] >= size[0] or img_size[1] >= size[1]):
-        img.thumbnail((size[0], size[1]), Image.LANCZOS)
-        background = Image.new('RGBA', (size[0], size[1]), (255, 255, 255, 0))
-        backgroung_size = (int((size[0] - img.size[0]) / 2), int((size[1] - img.size[1]) / 2))
-        background.paste(img, backgroung_size)
-        background.format = img_format
-        return background
-    else:
-        raise ValueError(u"Your image is too small. Minimum size: %s" % size)
+    img.thumbnail((size[0], size[1]), Image.LANCZOS)
+    background = Image.new('RGBA', (size[0], size[1]), (255, 255, 255, 0))
+    img_position = (int((size[0] - img.size[0]) / 2), int((size[1] - img.size[1]) / 2))
+    background.paste(img, img_position)
+    background.format = img_format
+    return background
 
 def resize_by_width(image, width):
     """
     Resize image according to size.
-    size is a list of two values, respectively [width, height]
+    image: a Pillow image instance
+    size: a list of two integers [width, height]
     """
     img_format = image.format
     img = image.copy()
@@ -62,12 +71,13 @@ def resize_by_width(image, width):
         img.format = img_format
         return img
     else:
-        raise ValueError(u"Your image is too small. Minimum size: %s" % size)
+        raise ImageSizeError(img_size[0], width)
 
 def resize_by_height(image, height):
     """
     Resize image according to size.
-    size is a list of two values, respectively [width, height]
+    image: a Pillow image instance
+    size: a list of two integers [width, height]
     """
     img_format = image.format
     img = image.copy()
@@ -78,12 +88,13 @@ def resize_by_height(image, height):
         img.format = img_format
         return img
     else:
-        raise ValueError(u"Your image is too small. Minimum size: %s" % size)
+        raise ImageSizeError(img_size[1], height)
 
 def resize_thumbnail(image, size):
     """
     Resize image according to size.
-    size is a list of two values, respectively [width, height]
+    image: a Pillow image instance
+    size: a list of two integers [width, height]
     """
     img_format = image.format
     img = image.copy()
