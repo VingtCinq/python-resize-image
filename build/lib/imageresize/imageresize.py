@@ -17,7 +17,7 @@ def resize_crop(image, size):
         top = int(math.ceil((old_size[1] - size[1])/2))
         right = int(math.ceil(old_size[0] - left))
         bottom = int(math.ceil(old_size[1] - top))
-        crop = int(image.crop((left, top, right, bottom)))
+        crop = image.crop((left, top, right, bottom))
         crop.format = img_format
         return crop
     else:

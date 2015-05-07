@@ -13,7 +13,7 @@ here = path.abspath(path.dirname(__file__))
 
 setup(
     name='python-image-resize',
-    version='1.1.1',
+    version='1.1.2',
     description='A Small python package to easily resize images',
     url='https://github.com/charlesthk/image-tools',
     author='Charles TISSIER',
