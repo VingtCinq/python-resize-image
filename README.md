@@ -7,8 +7,8 @@ The following functions are supported :
 
 * resize_cover 
 * resize_contain 
-* resize_by_width 
-* resize_by_height 
+* resize_width 
+* resize_height 
 * crop 
 
 
@@ -57,13 +57,13 @@ img.save('test-image-contain.jpeg', img.format)
 
 # Resize the image to be 200px width
 img = Image.open(test_img)
-img = imageresize.resize_by_width(img, 200)
+img = imageresize.resize_width(img, 200)
 img.save('test-image-width.jpeg', img.format)
 
 
 # Resize the image to be 200px height
 img = Image.open(test_img)
-img = imageresize.resize_by_height(img, 200)
+img = imageresize.resize_height(img, 200)
 img.save('test-image-height.jpeg', img.format)
 
 
