@@ -13,10 +13,10 @@ def resize_crop(image, size):
     image = image.copy()
     old_size = image.size
     if old_size[0] >= size[0] and old_size[1] >= size[1]:
-        left = math.ceil(((old_size[0] - size[0])/2)
-        top = math.ceil(((old_size[1] - size[1])/2)
-        right = math.ceil((old_size[0] - left)
-        bottom = math.ceil((old_size[1] - top)
+        left = math.ceil((old_size[0] - size[0])/2)
+        top = math.ceil((old_size[1] - size[1])/2)
+        right = math.ceil(old_size[0] - left)
+        bottom = math.ceil(old_size[1] - top)
         crop = image.crop((left, top, right, bottom))
         crop.format = img_format
         return crop
@@ -34,7 +34,7 @@ def resize_cover(image, size):
     img_size = img.size
     if (img_size[0] >= size[0] and img_size[1] >= size[1]):
         ratio = max(size[0]/img_size[0], size[1]/img_size[1])
-        new_size = [math.ceil((img_size[0]*ratio), math.ceil((img_size[1]*ratio)]
+        new_size = [math.ceil(img_size[0]*ratio), math.ceil(img_size[1]*ratio)]
         img = img.resize((new_size[0],new_size[1]), Image.LANCZOS)
         img = resize_crop(img, size)
         img.format = img_format
@@ -53,7 +53,7 @@ def resize_contain(image, size):
     img_size = img.size
     img.thumbnail((size[0], size[1]), Image.LANCZOS)
     background = Image.new('RGBA', (size[0], size[1]), (255, 255, 255, 0))
-    img_position = (math.ceil(((size[0] - img.size[0]) / 2), math.ceil(((size[1] - img.size[1]) / 2))
+    img_position = (math.ceil((size[0] - img.size[0]) / 2), math.ceil((size[1] - img.size[1]) / 2))
     background.paste(img, img_position)
     background.format = img_format
     return background
@@ -68,7 +68,7 @@ def resize_width(image, width):
     img = image.copy()
     img_size = img.size
     if (img_size[0] >= width):
-        new_height = math.ceil(((width/img_size[0])*img_size[1])
+        new_height = math.ceil((width/img_size[0])*img_size[1])
         img.thumbnail((width, new_height), Image.LANCZOS)
         img.format = img_format
         return img
@@ -85,7 +85,7 @@ def resize_height(image, height):
     img = image.copy()
     img_size = img.size
     if (img_size[1] >= height):
-        new_width = math.ceil(((height/img_size[1])*img_size[0])
+        new_width = math.ceil((height/img_size[1])*img_size[0])
         img.thumbnail((new_width, height), Image.LANCZOS)
         img.format = img_format
         return img
