@@ -2,7 +2,7 @@ import os
 from unittest import TestCase
 from time import time
 
-from PIL import Image, ImageOps
+from PIL import Image
 
 from imageresize import imageresize
 from imageresize.imageexceptions import ImageSizeError
@@ -92,7 +92,6 @@ class TestImageResize(TestCase):
         filename = self._tmp_filename('resize-thumbnail.jpeg')
         img.save(filename, img.format)
         self.assertEqual(Image.open(filename).size, (200, 133))
-
 
 
 if __name__ == '__main__':
