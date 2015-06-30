@@ -1,7 +1,9 @@
+
 from __future__ import division
 from PIL import Image
 import imageexceptions
 import math
+
 
 def resize_crop(image, size):
     """
@@ -13,10 +15,14 @@ def resize_crop(image, size):
     image = image.copy()
     old_size = image.size
     if old_size[0] >= size[0] and old_size[1] >= size[1]:
-        left = int(math.ceil((old_size[0] - size[0])/2))
-        top = int(math.ceil((old_size[1] - size[1])/2))
-        right = int(math.ceil(old_size[0] - left))
-        bottom = int(math.ceil(old_size[1] - top))
+        left = (old_size[0] - size[0])/2
+        top = (old_size[1] - size[1])/2
+        right = old_size[0] - left
+        bottom = old_size[1] - top
+        left, top, right, bottom = map(
+            lambda x: int(math.ceil(x)),
+            (left, top, right, bottom)
+        )
         crop = image.crop((left, top, right, bottom))
         crop.format = img_format
         return crop
