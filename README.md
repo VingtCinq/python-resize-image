@@ -1,3 +1,4 @@
+
 A python package to easily resize images
 ========================================
 
@@ -36,7 +37,7 @@ test_img = open('test-image.jpeg', 'rw')
 
 # Crop an image with a 200x200 cented square
 img = Image.open(test_img)
-img = imageresize.crop(img, [200, 200])
+img = imageresize.resize_crop(img, [200, 200])
 img.save('test-image-crop.jpeg', img.format)
 
 

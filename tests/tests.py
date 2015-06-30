@@ -7,7 +7,7 @@ test_img = open('test-image.jpeg', 'rw')
 
 img = Image.open(test_img)
 try:
-	img = imageresize.crop(img, [200, 200])
+	img = imageresize.resize_crop(img, [200, 200])
 except imageexceptions.ImageSizeError as e:
 	print e.message
 else:
