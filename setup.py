@@ -13,7 +13,7 @@ here = path.abspath(path.dirname(__file__))
 
 setup(
     name='python-image-resize',
-    version='1.1.2',
+    version='1.1.3',
     description='A Small python package to easily resize images',
     url='https://github.com/charlesthk/image-tools',
     author='Charles TISSIER',
@@ -26,7 +26,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
     ],
-    keywords='image resizing python',
+    keywords='image resize resizing python',
     packages=find_packages(),
     install_requires=['pillow'],
 )
