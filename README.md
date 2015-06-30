@@ -1,4 +1,5 @@
 
+
 A python package to easily resize images
 ========================================
 
@@ -10,7 +11,7 @@ The following functions are supported :
 * resize_contain 
 * resize_width 
 * resize_height 
-* crop 
+* resize_crop 
 
 
 Installation
@@ -78,8 +79,9 @@ Tests
 ----------
 
 ```
-cd tests/
-python tests.py
+pip install -r requirements.dev.txt
+pip install -e .
+make check
 ```
 
 
