@@ -1,3 +1,4 @@
+
 """
 A setuptools based setup module.
 See: https://packaging.python.org/en/latest/distributing.html
@@ -29,4 +30,5 @@ setup(
     keywords='image resize resizing python',
     packages=find_packages(),
     install_requires=['pillow'],
+    test_suite='tests',
 )
