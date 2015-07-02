@@ -1,17 +1,16 @@
-
-
 A python package to easily resize images
 ========================================
 
 This package gives function for easily resizing images.
 
-The following functions are supported :
+The following functions are supported:
 
-* resize_cover 
-* resize_contain 
-* resize_width 
-* resize_height 
-* resize_crop 
+* `resize_cover` resize the image the fill the specified area, crop as needed (same behavior as `background-size: cover`).
+* `resize_contain` resize the image to can fit in the specified area, keeping the ratio and without crop (same behavior as `background-size: contain`). 
+* `resize_width` resize the image to the specified width ajusting height to keep the ratio the same.
+* `resize_height` resize the image to the specified height ajusting width to keep the ratio the same.
+* `resize_crop` crop the image with a centered rectangle of the specified size.
+
 
 
 Installation
@@ -27,52 +26,16 @@ pip install python-image-resize
 Usage
 -----
 
-Here is a full example :
-
 ```python
-from imageresize import imageresize
-from cStringIO import StringIO
 from PIL import Image
+from cStringIO import StringIO
 
-test_img = open('test-image.jpeg', 'rw')
-
-# Crop an image with a 200x200 cented square
-img = Image.open(test_img)
-img = imageresize.resize_crop(img, [200, 200])
-img.save('test-image-crop.jpeg', img.format)
+from imageresize import imageresize
 
 
-# Resize and crop (from center) the image so that it covers a 200x100 rectangle
-# Same behavior as css background-size: cover property
-img = Image.open(test_img)
-img = imageresize.resize_cover(img, [200, 100])
-img.save('test-image-cover.jpeg', img.format)
-
-
-# Resize the image to minimum so that it is contained in a 200x100 rectangle
-# is the ratio between source and destination image, a background border is created
-# Same behavior as css background-size: contain property
-img = Image.open(test_img)
-img = imageresize.resize_contain(img, [200, 100])
-img.save('test-image-contain.jpeg', img.format)
-
-
-# Resize the image to be 200px width
-img = Image.open(test_img)
-img = imageresize.resize_width(img, 200)
-img.save('test-image-width.jpeg', img.format)
-
-
-# Resize the image to be 200px height
-img = Image.open(test_img)
-img = imageresize.resize_height(img, 200)
-img.save('test-image-height.jpeg', img.format)
-
-
-# Resize the image to be contained in a 200px square
-img = Image.open(test_img)
-img = imageresize.resize_thumbnail(img, [200, 200])
-img.save('test-image-thumbnail.jpeg', img.format)
+with Image.open('test-image.jpeg') as image:
+    cover = imageresize.resize_cover(image, [200, 100])
+    cover.save('test-image-cover.jpeg', image.format)
 ```
 
 Tests
@@ -81,15 +44,14 @@ Tests
 ```
 pip install -r requirements.dev.txt
 pip install -e .
-make check
+python setup.py test
 ```
 
 
 Contribute
 ----------
 
-- Issue Tracker: github.com/charlesthk/python-resize-image/issues
-- Source Code: github.com/charlesthk/python-resize-image
+python-image-resize is hosted at [github.com/VingtCinq/python-resize-image/](https://github.com/VingtCinq/python-resize-image).
 
 
 Support
