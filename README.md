@@ -16,10 +16,10 @@ The following functions are supported:
 Installation
 ------------
 
-Install python-image-resize by running:
+Install python-resize-image by running:
 
 ```
-pip install python-image-resize
+pip install python-resize-image
 ```
 
 
@@ -51,7 +51,7 @@ python setup.py test
 Contribute
 ----------
 
-python-image-resize is hosted at [github.com/VingtCinq/python-resize-image/](https://github.com/VingtCinq/python-resize-image).
+python-resize-image is hosted at [github.com/VingtCinq/python-resize-image/](https://github.com/VingtCinq/python-resize-image).
 
 
 Support
