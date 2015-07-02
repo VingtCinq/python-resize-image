@@ -24,7 +24,7 @@ def validate(validator):
     def decorator(func):
         # store validator to be able to use it without calling
         # the function
-        func.validator = validator
+        func.validate = validator
 
         @wraps(func)
         def wrapper(image, size, validate=True):

@@ -10,27 +10,27 @@ from imageresize.imageexceptions import ImageSizeError
 
 class TestValidateDecorator(unittest.TestCase):
 
-    def validator(x, y):
+    def validation(x, y):
         if x < y:
             raise Exception()
         else:
             return True
 
     @staticmethod
-    @imageresize.validate(validator)
+    @imageresize.validate(validation)
     def func(x, y):
         return x * y
 
     def test_no_exception(self):
         """
-        Test that when the validator function does not raise an
+        Test that when the validate function does not raise an
         error, the correct result is returned.
         """
         self.assertEqual(self.func(42, 2), 84)
 
     def test_exception(self):
         """
-        Test that when the validator fails, the exception is
+        Test that when the validate fails, the exception is
         properly propagated.
         """
         with self.assertRaises(Exception):
@@ -38,34 +38,34 @@ class TestValidateDecorator(unittest.TestCase):
 
     def test_no_validation(self):
         """
-        Test that when the validator fails, the exception is
+        Test that when the validate fails, the exception is
         properly propagated.
         """
         self.assertEqual(self.func(2, 42, validate=False), 84)
 
-    def test_validator_raise_exception(self):
+    def test_validate_raise_exception(self):
         """
-        Test that when the validator is called directly it raise
+        Test that when the validate is called directly it raise
         an exception when validation fails"""
         with self.assertRaises(Exception):
-            self.func.validator(2, 42)
+            self.func.validate(2, 42)
 
     def test_validation_only_no_exception(self):
         """
-        Test that when the validator is called directly it returns
+        Test that when the validate is called directly it returns
         `True`
         """
-        def validator(x):
+        def validate(x):
             if x < 0:
                 raise Exception()
             else:
                 return True
 
-        @imageresize.validate(validator)
+        @imageresize.validate(validate)
         def func(x):
             return x * 42
 
-        self.assertEqual(func.validator(1), True)
+        self.assertEqual(func.validate(1), True)
 
 
 class TestImageResize(unittest.TestCase):
