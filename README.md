@@ -34,11 +34,11 @@ In the following example, we open an image, crop it and save as new file:
 ```python
 from PIL import Image
 
-from imageresize import imageresize
+from resizeimage import resizeimage
 
 
 with Image.open('test-image.jpeg') as image:
-    cover = imageresize.resize_cover(image, [200, 100])
+    cover = resizeimage.resize_cover(image, [200, 100])
     cover.save('test-image-cover.jpeg', image.format)
 ```
 
@@ -46,7 +46,7 @@ Before resizing, python-image-resize will check wether the operation can be done
 one of the dimension. To avoid the test add `validate=False` as argument:
 
 ```python
-cover = imageresize.resize_cover(image, [200, 100], validate=False)
+cover = resizeimage.resize_cover(image, [200, 100], validate=False)
 ```
 
 You can also create a two step process validation then processing using `validate` function attached to resized function which allows to test the viability of the resize without doing it just after validation. `validate` is available using the dot `.` operator on every resize function e.g. `resize_cover.validate`.
@@ -56,18 +56,18 @@ The first exemple is rewritten in the following snippet to use this feature:
 ```python
 from PIL import Image
 
-from imageresize import imageresize
+from resizeimage import resizeimage
 
 
 with Image.open('test-image.jpeg') as image:
-    is_valid = imageresize.resize_cover.validate(image, [200, 100])
+    is_valid = resizeimage.resize_cover.validate(image, [200, 100])
 
 # do something else...
 
 if is_valid:
     with Image.open('test-image.jpeg') as image:
-        imageresize.resize_cover.validate(image, [200, 100], validate=False)
-        cover = imageresize.resize_cover(image, [200, 100]) 
+        resizeimage.resize_cover.validate(image, [200, 100], validate=False)
+        cover = resizeimage.resize_cover(image, [200, 100]) 
         cover.save('test-image-cover.jpeg', image.format)
 ```
 
@@ -86,7 +86,7 @@ from PIL import Image
 
 test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
-img = imageresize.resize_crop(img, [200, 200])
+img = resizeimage.resize_crop(img, [200, 200])
 img.save('test-image-crop.jpeg', img.format)
 ```
 
@@ -101,7 +101,7 @@ from PIL import Image
 
 test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
-img = imageresize.resize_cover(img, [200, 100])
+img = resizeimage.resize_cover(img, [200, 100])
 img.save('test-image-cover.jpeg', img.format)
 ```
 
@@ -116,7 +116,7 @@ from PIL import Image
 
 test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
-img = imageresize.resize_contain(img, [200, 100])
+img = resizeimage.resize_contain(img, [200, 100])
 img.save('test-image-contain.jpeg', img.format)
 ```
 
@@ -131,7 +131,7 @@ from PIL import Image
 
 test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
-img = imageresize.resize_width(img, 200)
+img = resizeimage.resize_width(img, 200)
 img.save('test-image-width.jpeg', img.format)
 ```
 
@@ -146,7 +146,7 @@ from PIL import Image
 
 test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
-img = imageresize.resize_height(img, 200)
+img = resizeimage.resize_height(img, 200)
 img.save('test-image-height.jpeg', img.format)
 ```
 
@@ -161,7 +161,7 @@ from PIL import Image
 
 test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
-img = imageresize.resize_thumbnail(img, [200, 200])
+img = resizeimage.resize_thumbnail(img, [200, 200])
 img.save('test-image-thumbnail.jpeg', img.format)
 ```
 
