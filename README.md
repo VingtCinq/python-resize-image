@@ -37,9 +37,10 @@ from PIL import Image
 from resizeimage import resizeimage
 
 
-with Image.open('test-image.jpeg') as image:
-    cover = resizeimage.resize_cover(image, [200, 100])
-    cover.save('test-image-cover.jpeg', image.format)
+with open('test-image.jpeg', 'r+b') as f:
+    with Image.open(f) as image:
+        cover = resizeimage.resize_cover(image, [200, 100])
+        cover.save('test-image-cover.jpeg', image.format)
 ```
 
 Before resizing, python-image-resize will check wether the operation can be done. A resize is considered valid if it doesn't require to increase
@@ -58,9 +59,9 @@ from PIL import Image
 
 from resizeimage import resizeimage
 
-
-with Image.open('test-image.jpeg') as image:
-    is_valid = resizeimage.resize_cover.validate(image, [200, 100])
+with open('test-image.jpeg', 'r+b')
+    with Image.open() as image:
+        is_valid = resizeimage.resize_cover.validate(image, [200, 100])
 
 # do something else...
 
@@ -88,6 +89,7 @@ test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
 img = resizeimage.resize_crop(img, [200, 200])
 img.save('test-image-crop.jpeg', img.format)
+test_img.close()
 ```
 
 ### `resize_cover(image, size, validate=True)`
@@ -103,6 +105,7 @@ test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
 img = resizeimage.resize_cover(img, [200, 100])
 img.save('test-image-cover.jpeg', img.format)
+test_img.close()
 ```
 
 ### `resize_contain(image, size, validate=True)`
@@ -118,6 +121,7 @@ test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
 img = resizeimage.resize_contain(img, [200, 100])
 img.save('test-image-contain.jpeg', img.format)
+test_img.close()
 ```
 
 ### `resize_height(image, width, validate=True)`
@@ -133,6 +137,7 @@ test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
 img = resizeimage.resize_width(img, 200)
 img.save('test-image-width.jpeg', img.format)
+test_img.close()
 ```
 
 ### `resize_height(image, height, validate=True)`
@@ -148,6 +153,7 @@ test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
 img = resizeimage.resize_height(img, 200)
 img.save('test-image-height.jpeg', img.format)
+test_img.close()
 ```
 
 ### `resize_thumbnail(image, size, validate=True)`
@@ -163,6 +169,7 @@ test_img = open('test-image.jpeg', 'rw')
 img = Image.open(test_img)
 img = resizeimage.resize_thumbnail(img, [200, 200])
 img.save('test-image-thumbnail.jpeg', img.format)
+test_img.close()
 ```
 
 ## Tests
