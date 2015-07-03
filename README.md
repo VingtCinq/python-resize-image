@@ -184,6 +184,20 @@ python setup.py test
 
 python-resize-image is hosted at [github.com/VingtCinq/python-resize-image/](https://github.com/VingtCinq/python-resize-image).
 
+Before coding install `pre-commit` as git hook using the following command:
+
+```
+cp pre-commit .git/hooks/
+```
+
+And install the hook and pylint:
+
+```
+pip install git-pylint-commit-hook pylint
+```
+
+If you want to force a commit (you need a good reason to do that) use `commit` with the `-n` option e.g. `git commit -n`.
+
 
 ## Support
 
