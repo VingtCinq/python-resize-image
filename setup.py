@@ -1,22 +1,23 @@
-
-"""
-A setuptools based setup module.
-See: https://packaging.python.org/en/latest/distributing.html
-"""
-
-# Always prefer setuptools over distutils
+import os
 from setuptools import setup, find_packages
-# To use a consistent encoding
-from codecs import open
-from os import path
 
-here = path.abspath(path.dirname(__file__))
+
+README = os.path.join(os.path.dirname(__file__), 'README.md')
+
+# when running tests using tox, README.md is not found
+try:
+    with open(README) as file:
+        long_description = file.read()
+except Exception:
+    long_description = ''
+
 
 setup(
-    name='python-image-resize',
+    name='python-resize-image',
     version='1.1.3',
     description='A Small python package to easily resize images',
-    url='https://github.com/charlesthk/image-tools',
+    long_description=long_description,
+    url='https://github.com/VingtCinq/python-resize-image',
     author='Charles TISSIER',
     author_email='charles@vingtcinq.io',
     license='MIT',
