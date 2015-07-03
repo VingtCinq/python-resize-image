@@ -1,6 +1,7 @@
 import os
-import unittest
 import shutil
+import unittest
+from contextlib import contextmanager
 
 from PIL import Image
 
@@ -93,12 +94,18 @@ class TestImageResize(unittest.TestCase):
         """
         return os.path.join(self._tmp_dir, filename)
 
+    @contextmanager
+    def _open_test_image(self):
+        with open(self.test_image_filepath, 'r+b') as f:
+            image = Image.open(f)
+            yield image
+
     def test_resize_crop(self):
         """
         Test that the image resized with resize_crop
         has the expected size
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             img = imageresize.resize_crop(img, [200, 200])
             filename = self._tmp_filename('crop.jpeg')
             img.save(filename, img.format)
@@ -110,7 +117,7 @@ class TestImageResize(unittest.TestCase):
         Test that resizing an image with resize_crop
         to a size larger than the original raises an error
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             with self.assertRaises(ImageSizeError):
                 imageresize.resize_crop(img, (801, 534))
 
@@ -119,7 +126,7 @@ class TestImageResize(unittest.TestCase):
         Test that the image resized with resize_cover
         has the expected size
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             img = imageresize.resize_cover(img, [200, 100])
             filename = self._tmp_filename('resize-cover.jpeg')
             img.save(filename, img.format)
@@ -131,7 +138,7 @@ class TestImageResize(unittest.TestCase):
         Test that resizing an image with resize_cover
         to a size larger than the original raises an error
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             with self.assertRaises(ImageSizeError):
                 imageresize.resize_cover(img, (801, 534))
 
@@ -140,7 +147,7 @@ class TestImageResize(unittest.TestCase):
         Test that the image resized with resize_contain
         has the expected size
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             img = imageresize.resize_contain(img, [200, 100])
             filename = self._tmp_filename('resize-contain.jpeg')
             img.save(filename, img.format)
@@ -152,7 +159,7 @@ class TestImageResize(unittest.TestCase):
         Test that the image resized with resize_contain
         has the expected size
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             img = imageresize.resize_contain(img, [801, 534])
             filename = self._tmp_filename('resize-contain-larger.jpeg')
             img.save(filename, img.format)
@@ -164,7 +171,7 @@ class TestImageResize(unittest.TestCase):
         Test that the image resized with resize_width
         has the expected size
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             img = imageresize.resize_width(img, 200)
             filename = self._tmp_filename('resize-width.jpeg')
             img.save(filename, img.format)
@@ -176,7 +183,7 @@ class TestImageResize(unittest.TestCase):
         Test that resizing an image with resize_width
         to a size larger than the original raises an error
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             with self.assertRaises(ImageSizeError):
                 imageresize.resize_width(img, 801)
 
@@ -185,7 +192,7 @@ class TestImageResize(unittest.TestCase):
         Test that the image resized with resize_height
         has the expected size
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             img = imageresize.resize_height(img, 200)
             filename = self._tmp_filename('resize-height.jpeg')
             img.save(filename, img.format)
@@ -193,7 +200,7 @@ class TestImageResize(unittest.TestCase):
                 self.assertEqual(image.size[1], 200)
 
     def test_can_not_resize_larger_height(self):
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             with self.assertRaises(ImageSizeError):
                 imageresize.resize_height(img, 534)
 
@@ -202,7 +209,7 @@ class TestImageResize(unittest.TestCase):
         Test that the image resized with resize_thumbnail
         has the expected size
         """
-        with Image.open(self.test_image_filepath) as img:
+        with self._open_test_image() as img:
             img = imageresize.resize_thumbnail(img, [200, 200])
             filename = self._tmp_filename('resize-thumbnail.jpeg')
             img.save(filename, img.format)
