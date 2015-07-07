@@ -1,7 +1,16 @@
 # A python package to easily resize images
 
+[![Build Status](https://travis-ci.org/VingtCinq/python-resize-image.svg?branch=master)](https://travis-ci.org/VingtCinq/python-resize-image)
 
 This package provides function for easily resizing images.
+
+## Dependencies
+
+- Pillow 2.7++
+- Django 1.8
+- Python 2.7/3.4
+
+## Introduction
 
 The following functions are supported:
 
