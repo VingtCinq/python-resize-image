@@ -6,5 +6,9 @@ python:
   
 install:
   - pip install -q tox
+  - pip install -q coveralls
   
-script: python setup.py test
+script: coverage run --source=resizeimage setup.py test
+
+after_success:
+  coveralls
