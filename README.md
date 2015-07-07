@@ -7,7 +7,6 @@ This package provides function for easily resizing images.
 ## Dependencies
 
 - Pillow 2.7++
-- Django 1.8
 - Python 2.7/3.4
 
 ## Introduction
