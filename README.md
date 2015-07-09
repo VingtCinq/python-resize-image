@@ -14,10 +14,10 @@ This package provides function for easily resizing images.
 The following functions are supported:
 
 * `resize_crop` crop the image with a centered rectangle of the specified size.
-* `resize_cover` resize the image the fill the specified area, crop as needed (same behavior as `background-size: cover`).
-* `resize_contain` resize the image to can fit in the specified area, keeping the ratio and without crop (same behavior as `background-size: contain`). 
-* `resize_height` resize the image to the specified height ajusting width to keep the ratio the same.
-* `resize_width` resize the image to the specified width ajusting height to keep the ratio the same.
+* `resize_cover` resize the image to fill the specified area, crop as needed (same behavior as `background-size: cover`).
+* `resize_contain` resize the image so that it can fit in the specified area, keeping the ratio and without crop (same behavior as `background-size: contain`). 
+* `resize_height` resize the image to the specified height adjusting width to keep the ratio the same.
+* `resize_width` resize the image to the specified width adjusting height to keep the ratio the same.
 * `resize_thumbnail` resize image while keeping the ratio trying its best to match the specified size.
 
 
@@ -37,7 +37,7 @@ pip install python-resize-image
 
 python-resize-image takes as first argument a `PIL.Image` and then `size` argument which can be a single integer or tuple of two integers.
 
-In the following example, we open an image, crop it and save as new file:
+In the following example, we open an image, *crop* it and save as new file:
 
 ```python
 from PIL import Image
@@ -51,7 +51,7 @@ with open('test-image.jpeg', 'r+b') as f:
         cover.save('test-image-cover.jpeg', image.format)
 ```
 
-Before resizing, python-image-resize will check wether the operation can be done. A resize is considered valid if it doesn't require to increase
+Before resizing, python-image-resize will check whether the operation can be done. A resize is considered valid if it doesn't require to increase
 one of the dimension. To avoid the test add `validate=False` as argument:
 
 ```python
@@ -102,7 +102,7 @@ test_img.close()
 
 ### `resize_cover(image, size, validate=True)`
 
-Resize the image the fill the specified area, crop as needed. It's the same behavior as css `background-size: cover` property.
+Resize the image to fill the specified area, crop as needed. It's the same behavior as css `background-size: cover` property.
 
 Resize and crop (from center) the image so that it covers a 200x100 rectangle.
 
@@ -118,7 +118,7 @@ test_img.close()
 
 ### `resize_contain(image, size, validate=True)`
 
-Resize the image to can fit in the specified area, keeping the ratio and without crop. It's the same behavior as css `background-size: contain` property. A white a background border is created.
+Resize the image so that it can fit in the specified area, keeping the ratio and without crop. It's the same behavior as css `background-size: contain` property. A white a background border is created.
 
 Resize the image to minimum so that it is contained in a 200x100 rectangle is the ratio between source and destination image.
 
@@ -134,7 +134,7 @@ test_img.close()
 
 ### `resize_height(image, width, validate=True)`
 
-Resize the image to the specified height ajusting width to keep the ratio the same.
+Resize the image to the specified height adjusting width to keep the ratio the same.
 
 Resize the image to be 200px width:
 
@@ -150,7 +150,7 @@ test_img.close()
 
 ### `resize_height(image, height, validate=True)`
 
-Resize the image to the specified width ajusting height to keep the ratio the same.
+Resize the image to the specified width adjusting height to keep the ratio the same.
 
 Resize the image to be 200px height:
 
