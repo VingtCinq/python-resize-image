@@ -1,4 +1,4 @@
-
+"""main module with resize and validation functions"""
 from __future__ import division
 import math
 from functools import wraps
@@ -22,6 +22,7 @@ def validate(validator):
     """
 
     def decorator(func):
+        """Bound decorator to a particular validator function"""
         # store validator to be able to use it without calling
         # the function
         func.validate = validator
@@ -37,16 +38,19 @@ def validate(validator):
 
 
 def _is_big_enough(image, size):
-    if ((size[0] > image.size[0]) and (size[1] > image.size[1])):
+    """Check that the image's size superior to `size`"""
+    if (size[0] > image.size[0]) and (size[1] > image.size[1]):
         raise ImageSizeError(image.size, size)
 
 
 def _width_is_big_enough(image, size):
+    """Check that the image width is superior to `size`"""
     if size >= image.size[0]:
         raise ImageSizeError(image.size[0], size)
 
 
 def _height_is_big_enough(image, size):
+    """Check that the image height is superior to `size`"""
     if size >= image.size[1]:
         raise ImageSizeError(image.size[1], size)
 
@@ -65,13 +69,12 @@ def resize_crop(image, size):
     top = (old_size[1] - size[1]) / 2
     right = old_size[0] - left
     bottom = old_size[1] - top
-    left, top, right, bottom = map(
-    lambda x: int(math.ceil(x)),
-        (left, top, right, bottom)
-    )
+    rect = [int(math.ceil(x)) for x in (left, top, right, bottom)]
+    left, top, right, bottom = rect
     crop = image.crop((left, top, right, bottom))
     crop.format = img_format
     return crop
+
 
 @validate(_is_big_enough)
 def resize_cover(image, size):
@@ -111,6 +114,7 @@ def resize_contain(image, size):
     background.paste(img, img_position)
     background.format = img_format
     return background
+
 
 @validate(_width_is_big_enough)
 def resize_width(image, width):
