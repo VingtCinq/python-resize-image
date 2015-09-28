@@ -1,6 +1,7 @@
 """main module with resize and validation functions"""
 from __future__ import division
 import math
+import sys
 from functools import wraps
 
 from PIL import Image
@@ -156,3 +157,32 @@ def resize_thumbnail(image, size):
     img.thumbnail((size[0], size[1]), Image.LANCZOS)
     img.format = img_format
     return img
+
+
+def resize(method, image, size):
+    """
+    Helper function to access one of the resize function.
+    image: a Pillow image instance
+    """
+    if method not in ['crop',
+                      'cover',
+                      'contain',
+                      'width',
+                      'height',
+                      'thumbnail']:
+        method = 'thumbnail'
+    return getattr(sys.modules[__name__], 'resize_%s' % method)(image, size)
+
+
+def resize_from_file(method, image_file_name_in, size, image_file_name_out=None):
+    """
+    Helper function to access one of the resize function.
+    If an image_file_name_out is specified, the image is saved inside
+    """
+    with open(image_file_name_in, 'r') as fd_image_in:
+        image_in = Image.open(fd_image_in)
+        out_image = resize(method, image_in, size)
+        if image_file_name_out is not None:
+            out_image.save(image_file_name_out, out_image.format)
+            out_image.close()
+        return out_image
