@@ -44,13 +44,6 @@ class TestValidateDecorator(unittest.TestCase):
         """
         self.assertEqual(self.func(2, 42, validate=False), 84)
 
-    def test_validate_raise_exception(self):
-        """
-        Test that when the validate is called directly it raise
-        an exception when validation fails"""
-        with self.assertRaises(Exception):
-            self.func.validate(2, 42)
-
     def test_validation_only_no_exception(self):
         """
         Test that when the validate is called directly it returns
@@ -61,12 +54,6 @@ class TestValidateDecorator(unittest.TestCase):
                 raise Exception()
             else:
                 return True
-
-        @resizeimage.validate(validate)
-        def func(x):
-            return x * 42
-
-        self.assertEqual(func.validate(1), True)
 
 
 class TestResizeimage(unittest.TestCase):

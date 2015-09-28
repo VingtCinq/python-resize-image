@@ -9,6 +9,6 @@ class ImageSizeError(Exception):
         self.message = 'Image is too small, Image size : %s, Required size : %s' % (actual_size, required_size)
         self.actual_size = actual_size
         self.required_size = required_size
-        
+
     def __str__(self):
         return repr(self.message)

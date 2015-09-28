@@ -93,11 +93,11 @@ Crop an image with a 200x200 cented square:
 ```python
 from PIL import Image
 
-test_img = open('test-image.jpeg', 'rw')
-img = Image.open(test_img)
+fd_img = open('test-image.jpeg', 'r')
+img = Image.open(fd_img)
 img = resizeimage.resize_crop(img, [200, 200])
 img.save('test-image-crop.jpeg', img.format)
-test_img.close()
+fd_img.close()
 ```
 
 ### `resize_cover(image, size, validate=True)`
@@ -109,11 +109,11 @@ Resize and crop (from center) the image so that it covers a 200x100 rectangle.
 ```python
 from PIL import Image
 
-test_img = open('test-image.jpeg', 'rw')
-img = Image.open(test_img)
+fd_img = open('test-image.jpeg', 'r')
+img = Image.open(fd_img)
 img = resizeimage.resize_cover(img, [200, 100])
 img.save('test-image-cover.jpeg', img.format)
-test_img.close()
+fd_img.close()
 ```
 
 ### `resize_contain(image, size, validate=True)`
@@ -125,11 +125,11 @@ Resize the image to minimum so that it is contained in a 200x100 rectangle is th
 ```python
 from PIL import Image
 
-test_img = open('test-image.jpeg', 'rw')
-img = Image.open(test_img)
+fd_img = open('test-image.jpeg', 'r')
+img = Image.open(fd_img)
 img = resizeimage.resize_contain(img, [200, 100])
 img.save('test-image-contain.jpeg', img.format)
-test_img.close()
+fd_img.close()
 ```
 
 ### `resize_height(image, width, validate=True)`
@@ -141,11 +141,11 @@ Resize the image to be 200px width:
 ```python
 from PIL import Image
 
-test_img = open('test-image.jpeg', 'rw')
-img = Image.open(test_img)
+fd_img = open('test-image.jpeg', 'r')
+img = Image.open(fd_img)
 img = resizeimage.resize_width(img, 200)
 img.save('test-image-width.jpeg', img.format)
-test_img.close()
+fd_img.close()
 ```
 
 ### `resize_height(image, height, validate=True)`
@@ -157,11 +157,11 @@ Resize the image to be 200px height:
 ```python
 from PIL import Image
 
-test_img = open('test-image.jpeg', 'rw')
-img = Image.open(test_img)
+fd_img = open('test-image.jpeg', 'r')
+img = Image.open(fd_img)
 img = resizeimage.resize_height(img, 200)
 img.save('test-image-height.jpeg', img.format)
-test_img.close()
+fd_img.close()
 ```
 
 ### `resize_thumbnail(image, size, validate=True)`
@@ -173,11 +173,11 @@ Resize the image to be contained in a 200px square:
 ```python
 from PIL import Image
 
-test_img = open('test-image.jpeg', 'rw')
-img = Image.open(test_img)
+fd_img = open('test-image.jpeg', 'r')
+img = Image.open(fd_img)
 img = resizeimage.resize_thumbnail(img, [200, 200])
 img.save('test-image-thumbnail.jpeg', img.format)
-test_img.close()
+fd_img.close()
 ```
 
 ## Tests
