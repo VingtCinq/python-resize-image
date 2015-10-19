@@ -41,24 +41,24 @@ def _is_big_enough(image, size):
         raise ImageSizeError(image.size, size)
 
 
-def _width_is_big_enough(image, size):
-    """Check that the image width is superior to `size`"""
-    if size >= image.size[0]:
-        raise ImageSizeError(image.size[0], size)
+def _width_is_big_enough(image, width):
+    """Check that the image width is superior to `width`"""
+    if width >= image.size[0]:
+        raise ImageSizeError(image.size[0], width)
 
 
-def _height_is_big_enough(image, size):
-    """Check that the image height is superior to `size`"""
-    if size >= image.size[1]:
-        raise ImageSizeError(image.size[1], size)
+def _height_is_big_enough(image, height):
+    """Check that the image height is superior to `height`"""
+    if height >= image.size[1]:
+        raise ImageSizeError(image.size[1], height)
 
 
 @validate(_is_big_enough)
 def resize_crop(image, size):
     """
     Crop the image with a centered rectangle of the specified size
-    image: a Pillow image instance
-    size: a list of two integers [width, height]
+    image:      a Pillow image instance
+    size:       a list of two integers [width, height]
     """
     img_format = image.format
     image = image.copy()
@@ -78,8 +78,8 @@ def resize_crop(image, size):
 def resize_cover(image, size):
     """
     Resize image according to size.
-    image: a Pillow image instance
-    size: a list of two integers [width, height]
+    image:      a Pillow image instance
+    size:       a list of two integers [width, height]
     """
     img_format = image.format
     img = image.copy()
@@ -98,8 +98,8 @@ def resize_cover(image, size):
 def resize_contain(image, size):
     """
     Resize image according to size.
-    image: a Pillow image instance
-    size: a list of two integers [width, height]
+    image:      a Pillow image instance
+    size:       a list of two integers [width, height]
     """
     img_format = image.format
     img = image.copy()
@@ -115,12 +115,16 @@ def resize_contain(image, size):
 
 
 @validate(_width_is_big_enough)
-def resize_width(image, width):
+def resize_width(image, size):
     """
     Resize image according to size.
-    image: a Pillow image instance
-    size: a list of two integers [width, height]
+    image:      a Pillow image instance
+    size:       an integer or a list or tuple of two integers [width, height]
     """
+    try:
+        width = size[0]
+    except:
+        width = size
     img_format = image.format
     img = image.copy()
     img_size = img.size
@@ -131,12 +135,16 @@ def resize_width(image, width):
 
 
 @validate(_height_is_big_enough)
-def resize_height(image, height):
+def resize_height(image, size):
     """
     Resize image according to size.
-    image: a Pillow image instance
-    size: a list of two integers [width, height]
+    image:      a Pillow image instance
+    size:       an integer or a list or tuple of two integers [width, height]
     """
+    try:
+        height = size[1]
+    except:
+        height = size
     img_format = image.format
     img = image.copy()
     img_size = img.size
@@ -149,9 +157,10 @@ def resize_height(image, height):
 def resize_thumbnail(image, size):
     """
     Resize image according to size.
-    image: a Pillow image instance
-    size: a list of two integers [width, height]
+    image:      a Pillow image instance
+    size:       a list of two integers [width, height]
     """
+
     img_format = image.format
     img = image.copy()
     img.thumbnail((size[0], size[1]), Image.LANCZOS)
@@ -162,7 +171,9 @@ def resize_thumbnail(image, size):
 def resize(method, image, size):
     """
     Helper function to access one of the resize function.
-    image: a Pillow image instance
+    method:     one among 'crop', 'cover', 'contain', 'width', 'height' or 'thumbnail'
+    image:      a Pillow image instance
+    size:       a list or tuple of two integers [width, height]
     """
     if method not in ['crop',
                       'cover',
@@ -170,19 +181,6 @@ def resize(method, image, size):
                       'width',
                       'height',
                       'thumbnail']:
-        method = 'thumbnail'
+        raise ValueError(u"method argument should be one of \
+            'crop', 'cover', 'contain', 'width', 'height' or 'thumbnail'")
     return getattr(sys.modules[__name__], 'resize_%s' % method)(image, size)
-
-
-def resize_from_file(method, image_file_name_in, size, image_file_name_out=None):
-    """
-    Helper function to access one of the resize function.
-    If an image_file_name_out is specified, the image is saved inside
-    """
-    with open(image_file_name_in, 'r') as fd_image_in:
-        image_in = Image.open(fd_image_in)
-        out_image = resize(method, image_in, size)
-        if image_file_name_out is not None:
-            out_image.save(image_file_name_out, out_image.format)
-            out_image.close()
-        return out_image
