@@ -92,6 +92,7 @@ Crop an image with a 200x200 cented square:
 
 ```python
 from PIL import Image
+from resizeimage import resizeimage
 
 fd_img = open('test-image.jpeg', 'r')
 img = Image.open(fd_img)
@@ -108,6 +109,7 @@ Resize and crop (from center) the image so that it covers a 200x100 rectangle.
 
 ```python
 from PIL import Image
+from resizeimage import resizeimage
 
 fd_img = open('test-image.jpeg', 'r')
 img = Image.open(fd_img)
@@ -124,6 +126,7 @@ Resize the image to minimum so that it is contained in a 200x100 rectangle is th
 
 ```python
 from PIL import Image
+from resizeimage import resizeimage
 
 fd_img = open('test-image.jpeg', 'r')
 img = Image.open(fd_img)
@@ -140,6 +143,7 @@ Resize the image to be 200px width:
 
 ```python
 from PIL import Image
+from resizeimage import resizeimage
 
 fd_img = open('test-image.jpeg', 'r')
 img = Image.open(fd_img)
@@ -156,6 +160,7 @@ Resize the image to be 200px height:
 
 ```python
 from PIL import Image
+from resizeimage import resizeimage
 
 fd_img = open('test-image.jpeg', 'r')
 img = Image.open(fd_img)
@@ -172,6 +177,7 @@ Resize the image to be contained in a 200px square:
 
 ```python
 from PIL import Image
+from resizeimage import resizeimage
 
 fd_img = open('test-image.jpeg', 'r')
 img = Image.open(fd_img)
@@ -187,6 +193,7 @@ Resize Image with the specified method : 'crop', 'cover', 'contain', 'width', 'h
 
 ```python
 from PIL import Image
+from resizeimage import resizeimage
 
 fd_img = open('test-image.jpeg', 'r')
 img = Image.open(fd_img)
@@ -203,6 +210,7 @@ Resize Image with the specified method : 'crop', 'cover', 'contain', 'width', 'h
 
 ```python
 from PIL import Image
+from resizeimage import resizeimage
 
 fd_img = open('test-image.jpeg', 'r')
 img = Image.open(fd_img)
@@ -219,6 +227,7 @@ Open the given file, resize it with the specified method and size('crop', 'cover
 
 ```python
 from PIL import Image
+from resizeimage import resizeimage
 
 resizeimage.resize_from_file('thumbnail', 'test-image.jpeg', [200, 200], 'out-image.jpeg')
 ```
