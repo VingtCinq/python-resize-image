@@ -135,7 +135,7 @@ img.save('test-image-contain.jpeg', img.format)
 fd_img.close()
 ```
 
-### `resize_with(image, width, validate=True)`
+### `resize_width(image, width, validate=True)`
 
 Resize the image to the specified height adjusting width to keep the ratio the same.
 

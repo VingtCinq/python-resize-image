@@ -15,7 +15,7 @@ except Exception:
 
 setup(
     name='python-resize-image',
-    version='1.1.8',
+    version='1.1.10',
     description='A Small python package to easily resize images',
     long_description=long_description,
     url='https://github.com/VingtCinq/python-resize-image',
