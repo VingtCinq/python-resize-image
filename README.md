@@ -135,7 +135,7 @@ img.save('test-image-contain.jpeg', img.format)
 fd_img.close()
 ```
 
-### `resize_height(image, width, validate=True)`
+### `resize_with(image, width, validate=True)`
 
 Resize the image to the specified height adjusting width to keep the ratio the same.
 
@@ -201,37 +201,6 @@ img = resizeimage.resize('thumbnail', img, [200, 200])
 img.save('test-image-thumbnail.jpeg', img.format)
 fd_img.close()
 ```
-
-
-### `resize(method, image, size)`
-
-Resize Image with the specified method : 'crop', 'cover', 'contain', 'width', 'height' or 'thumbnail'.
-
-
-```python
-from PIL import Image
-from resizeimage import resizeimage
-
-fd_img = open('test-image.jpeg', 'r')
-img = Image.open(fd_img)
-img = resizeimage.resize('thumbnail', img, [200, 200])
-img.save('test-image-thumbnail.jpeg', img.format)
-fd_img.close()
-```
-
-
-### `resize_from_file(method, image_file_name_in, size, image_file_name_out=None)`
-
-Open the given file, resize it with the specified method and size('crop', 'cover', 'contain', 'width', 'height' or 'thumbnail') and optionaly save it into a the given image_file_name_out.
-
-
-```python
-from PIL import Image
-from resizeimage import resizeimage
-
-resizeimage.resize_from_file('thumbnail', 'test-image.jpeg', [200, 200], 'out-image.jpeg')
-```
-
 
 ## Tests
 
