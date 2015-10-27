@@ -3,7 +3,7 @@ import os
 from setuptools import setup, find_packages
 
 
-README = os.path.join(os.path.dirname(__file__), 'README.md')
+README = os.path.join(os.path.dirname(__file__), 'README.rst')
 
 # when running tests using tox, README.md is not found
 try:
@@ -15,7 +15,7 @@ except Exception:
 
 setup(
     name='python-resize-image',
-    version='1.1.7',
+    version='1.1.8',
     description='A Small python package to easily resize images',
     long_description=long_description,
     url='https://github.com/VingtCinq/python-resize-image',
