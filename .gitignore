@@ -4,3 +4,9 @@ venv
 dist
 build
 .coverage
+
+#Banish OSX filesystem trash
+.DS_Store
+
+# test images
+tests/tmp-images
