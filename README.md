@@ -1,7 +1,5 @@
 # A python package to easily resize images
 
-[![Build Status](https://travis-ci.org/VingtCinq/python-resize-image.svg?branch=master)](https://travis-ci.org/VingtCinq/python-resize-image)
-
 This package provides function for easily resizing images.
 
 ## Dependencies

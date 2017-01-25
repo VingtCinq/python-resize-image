@@ -1,8 +1,6 @@
 A python package to easily resize images
 ========================================
 
-|Build Status|
-
 This package provides function for easily resizing images.
 
 Dependencies
@@ -278,5 +276,3 @@ License
 
 The project is licensed under the MIT License.
 
-.. |Build Status| image:: https://travis-ci.org/VingtCinq/python-resize-image.svg?branch=master
-   :target: https://travis-ci.org/VingtCinq/python-resize-image
