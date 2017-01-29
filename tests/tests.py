@@ -153,6 +153,24 @@ class TestResizeimage(unittest.TestCase):
             with Image.open(filename) as image:
                 self.assertEqual(image.size, (801, 534))
 
+    def test_resize_contain_bgcolor(self):
+        """
+        Test that the image resized with resize_contain
+        and a bgcolor has the correct background color
+        in the background
+        """
+        with self._open_test_image() as img:
+            # testcolor evaluation only works when doing a (R,G,B)-type
+            # color, not a hexstring, though its totally valid to send
+            # a hexstring
+            testcolor = (127, 128, 0)
+            img = resizeimage.resize_contain(img, [200, 100], testcolor)
+            filename = self._tmp_filename('resize-contain-bgcolor.jpeg')
+            img.save(filename, img.format)
+            with Image.open(filename) as image:
+                image_rgb = image.convert('RGB')
+                self.assertEqual(image_rgb.getpixel((1, 1)), testcolor)
+
     def test_resize_width(self):
         """
         Test that the image resized with resize_width

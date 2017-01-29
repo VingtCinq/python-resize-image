@@ -95,16 +95,18 @@ def resize_cover(image, size):
     return img
 
 
-def resize_contain(image, size):
+def resize_contain(image, size, bgcolor=(255,255,255,0)):
     """
     Resize image according to size.
     image:      a Pillow image instance
     size:       a list of two integers [width, height]
+    bgcolor:    a Pillow ImageColor (e.g. hex-strings "#FFFFFF"
+                    or RGB function values [255,255,255])
     """
     img_format = image.format
     img = image.copy()
     img.thumbnail((size[0], size[1]), Image.LANCZOS)
-    background = Image.new('RGBA', (size[0], size[1]), (255, 255, 255, 0))
+    background = Image.new('RGBA', (size[0], size[1]), bgcolor)
     img_position = (
         int(math.ceil((size[0] - img.size[0]) / 2)),
         int(math.ceil((size[1] - img.size[1]) / 2))
