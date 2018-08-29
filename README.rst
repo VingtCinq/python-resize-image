@@ -1,3 +1,5 @@
+|python-resize-image v1.1.12 on PyPi| |MIT license| |Stable|
+
 A python package to easily resize images
 ========================================
 
@@ -60,7 +62,7 @@ file:
             cover.save('test-image-cover.jpeg', image.format)
 
 Before resizing, python-image-resize will check whether the operation
-can be done. A resize is considered valid if it doesn't require to
+can be done. A resize is considered valid if it doesn’t require to
 increase one of the dimension. To avoid the test add ``validate=False``
 as argument:
 
@@ -95,7 +97,7 @@ feature:
             cover = resizeimage.resize_cover(image, [200, 100]) 
             cover.save('test-image-cover.jpeg', image.format)
 
-Mind the fact that it's useless to validate the image twice, so we pass
+Mind the fact that it’s useless to validate the image twice, so we pass
 ``validate=False`` to ``resize_cover.validate``.
 
 API Reference
@@ -122,7 +124,7 @@ Crop an image with a 200x200 cented square:
 ``resize_cover(image, size, validate=True)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Resize the image to fill the specified area, crop as needed. It's the
+Resize the image to fill the specified area, crop as needed. It’s the
 same behavior as css ``background-size: cover`` property.
 
 Resize and crop (from center) the image so that it covers a 200x100
@@ -143,7 +145,7 @@ rectangle.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Resize the image so that it can fit in the specified area, keeping the
-ratio and without crop. It's the same behavior as css
+ratio and without crop. It’s the same behavior as css
 ``background-size: contain`` property. A white a background border is
 created.
 
@@ -221,8 +223,8 @@ Resize the image to be contained in a 200px square:
 ``resize(method, image, size)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Resize Image with the specified method : 'crop', 'cover', 'contain',
-'width', 'height' or 'thumbnail'.
+Resize Image with the specified method : ‘crop’, ‘cover’, ‘contain’,
+‘width’, ‘height’ or ‘thumbnail’.
 
 .. code:: python
 
@@ -275,4 +277,9 @@ License
 -------
 
 The project is licensed under the MIT License.
+
+.. |python-resize-image v1.1.12 on PyPi| image:: https://img.shields.io/badge/pypi-1.1.12-green.svg
+   :target: https://pypi.python.org/pypi/python-resize-image
+.. |MIT license| image:: https://img.shields.io/badge/licence-MIT-blue.svg
+.. |Stable| image:: https://img.shields.io/badge/status-stable-green.svg
 
