@@ -183,4 +183,4 @@ def resize(method, image, size):
                       'thumbnail']:
         raise ValueError(u"method argument should be one of \
             'crop', 'cover', 'contain', 'width', 'height' or 'thumbnail'")
-    return getattr(sys.modules[__name__], 'resize_%s' % method)(image, size)
+    return getattr(sys.modules[__name__], 'resize_%s' % method)(image, size, Image.ANTIALIAS)
