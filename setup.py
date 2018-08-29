@@ -30,9 +30,11 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
     keywords='image resize resizing python',
     packages=find_packages(),
-    install_requires=['pillow', 'requests'],
+    install_requires=['Pillow>=5.1.0', 'requests>=2.19.1'],
     test_suite='tests',
 )

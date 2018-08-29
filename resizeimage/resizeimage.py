@@ -111,7 +111,7 @@ def resize_contain(image, size):
     )
     background.paste(img, img_position)
     background.format = img_format
-    return background
+    return background.convert('RGB')
 
 
 @validate(_width_is_big_enough)
