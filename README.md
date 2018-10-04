@@ -1,4 +1,4 @@
-[![python-resize-image v1.1.13 on PyPi](https://img.shields.io/badge/pypi-1.1.13-green.svg)](https://pypi.python.org/pypi/python-resize-image)
+[![python-resize-image v1.1.14 on PyPi](https://img.shields.io/badge/pypi-1.1.14-green.svg)](https://pypi.python.org/pypi/python-resize-image)
 ![MIT license](https://img.shields.io/badge/licence-MIT-blue.svg)
 ![Stable](https://img.shields.io/badge/status-stable-green.svg)
 
@@ -104,7 +104,7 @@ img.save('test-image-crop.jpeg', img.format)
 fd_img.close()
 ```
 
-### `resize_cover(image, size, validate=True)`
+### `resize_cover(image, size, validate=True, resample=Image.LANCZOS)`
 
 Resize the image to fill the specified area, crop as needed. It's the same behavior as css `background-size: cover` property.
 
@@ -121,7 +121,7 @@ img.save('test-image-cover.jpeg', img.format)
 fd_img.close()
 ```
 
-### `resize_contain(image, size, validate=True)`
+### `resize_contain(image, size, validate=True, resample=Image.LANCZOS, bg_color=(255, 255, 255, 0))`
 
 Resize the image so that it can fit in the specified area, keeping the ratio and without crop. It's the same behavior as css `background-size: contain` property. A white a background border is created.
 
@@ -138,7 +138,7 @@ img.save('test-image-contain.jpeg', img.format)
 fd_img.close()
 ```
 
-### `resize_width(image, width, validate=True)`
+### `resize_width(image, width, validate=True, resample=Image.LANCZOS)`
 
 Resize the image to the specified height adjusting width to keep the ratio the same.
 
@@ -155,7 +155,7 @@ img.save('test-image-width.jpeg', img.format)
 fd_img.close()
 ```
 
-### `resize_height(image, height, validate=True)`
+### `resize_height(image, height, validate=True, resample=Image.LANCZOS)`
 
 Resize the image to the specified width adjusting height to keep the ratio the same.
 
@@ -172,7 +172,7 @@ img.save('test-image-height.jpeg', img.format)
 fd_img.close()
 ```
 
-### `resize_thumbnail(image, size, validate=True)`
+### `resize_thumbnail(image, size, validate=True, resample=Image.LANCZOS)`
 
 Resize image while keeping the ratio trying its best to match the specified size.
 
@@ -189,7 +189,7 @@ img.save('test-image-thumbnail.jpeg', img.format)
 fd_img.close()
 ```
 
-### `resize(method, image, size)`
+### `resize(method, *args, **kwargs)`
 
 Resize Image with the specified method : 'crop', 'cover', 'contain', 'width', 'height' or 'thumbnail'.
 

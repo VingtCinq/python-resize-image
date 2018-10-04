@@ -95,7 +95,7 @@ def resize_cover(image, size, resample=Image.LANCZOS):
     return img
 
 
-def resize_contain(image, size, resample=Image.LANCZOS):
+def resize_contain(image, size, resample=Image.LANCZOS, bg_color=(255, 255, 255, 0)):
     """
     Resize image according to size.
     image:      a Pillow image instance
@@ -104,7 +104,7 @@ def resize_contain(image, size, resample=Image.LANCZOS):
     img_format = image.format
     img = image.copy()
     img.thumbnail((size[0], size[1]), resample)
-    background = Image.new('RGBA', (size[0], size[1]), (255, 255, 255, 0))
+    background = Image.new('RGBA', (size[0], size[1]), bg_color)
     img_position = (
         int(math.ceil((size[0] - img.size[0]) / 2)),
         int(math.ceil((size[1] - img.size[1]) / 2))
@@ -168,7 +168,7 @@ def resize_thumbnail(image, size, resample=Image.LANCZOS)):
     return img
 
 
-def resize(method, image, size):
+def resize(method, *args, **kwargs):
     """
     Helper function to access one of the resize function.
     method:     one among 'crop', 'cover', 'contain', 'width', 'height' or 'thumbnail'
@@ -183,4 +183,4 @@ def resize(method, image, size):
                       'thumbnail']:
         raise ValueError(u"method argument should be one of \
             'crop', 'cover', 'contain', 'width', 'height' or 'thumbnail'")
-    return getattr(sys.modules[__name__], 'resize_%s' % method)(image, size, Image.ANTIALIAS)
+    return getattr(sys.modules[__name__], 'resize_%s' % method)(*args, **kwargs)

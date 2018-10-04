@@ -1,4 +1,4 @@
-|python-resize-image v1.1.13 on PyPi| |MIT license| |Stable|
+|python-resize-image v1.1.14 on PyPi| |MIT license| |Stable|
 
 A python package to easily resize images
 ========================================
@@ -121,8 +121,8 @@ Crop an image with a 200x200 cented square:
     img.save('test-image-crop.jpeg', img.format)
     fd_img.close()
 
-``resize_cover(image, size, validate=True)``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``resize_cover(image, size, validate=True, resample=Image.LANCZOS)``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Resize the image to fill the specified area, crop as needed. It’s the
 same behavior as css ``background-size: cover`` property.
@@ -141,8 +141,8 @@ rectangle.
     img.save('test-image-cover.jpeg', img.format)
     fd_img.close()
 
-``resize_contain(image, size, validate=True)``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``resize_contain(image, size, validate=True, resample=Image.LANCZOS, bg_color=(255, 255, 255, 0))``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Resize the image so that it can fit in the specified area, keeping the
 ratio and without crop. It’s the same behavior as css
@@ -163,8 +163,8 @@ rectangle is the ratio between source and destination image.
     img.save('test-image-contain.jpeg', img.format)
     fd_img.close()
 
-``resize_width(image, width, validate=True)``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``resize_width(image, width, validate=True, resample=Image.LANCZOS)``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Resize the image to the specified height adjusting width to keep the
 ratio the same.
@@ -182,8 +182,8 @@ Resize the image to be 200px width:
     img.save('test-image-width.jpeg', img.format)
     fd_img.close()
 
-``resize_height(image, height, validate=True)``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``resize_height(image, height, validate=True, resample=Image.LANCZOS)``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Resize the image to the specified width adjusting height to keep the
 ratio the same.
@@ -201,8 +201,8 @@ Resize the image to be 200px height:
     img.save('test-image-height.jpeg', img.format)
     fd_img.close()
 
-``resize_thumbnail(image, size, validate=True)``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``resize_thumbnail(image, size, validate=True, resample=Image.LANCZOS)``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Resize image while keeping the ratio trying its best to match the
 specified size.
@@ -220,8 +220,8 @@ Resize the image to be contained in a 200px square:
     img.save('test-image-thumbnail.jpeg', img.format)
     fd_img.close()
 
-``resize(method, image, size)``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``resize(method, *args, **kwargs)``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Resize Image with the specified method : ‘crop’, ‘cover’, ‘contain’,
 ‘width’, ‘height’ or ‘thumbnail’.
@@ -278,7 +278,7 @@ License
 
 The project is licensed under the MIT License.
 
-.. |python-resize-image v1.1.13 on PyPi| image:: https://img.shields.io/badge/pypi-1.1.13-green.svg
+.. |python-resize-image v1.1.14 on PyPi| image:: https://img.shields.io/badge/pypi-1.1.14-green.svg
    :target: https://pypi.python.org/pypi/python-resize-image
 .. |MIT license| image:: https://img.shields.io/badge/licence-MIT-blue.svg
 .. |Stable| image:: https://img.shields.io/badge/status-stable-green.svg
