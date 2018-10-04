@@ -75,7 +75,7 @@ def resize_crop(image, size):
 
 
 @validate(_is_big_enough)
-def resize_cover(image, size):
+def resize_cover(image, size, resample=Image.LANCZOS):
     """
     Resize image according to size.
     image:      a Pillow image instance
@@ -89,13 +89,13 @@ def resize_cover(image, size):
         int(math.ceil(img_size[0] * ratio)),
         int(math.ceil(img_size[1] * ratio))
     ]
-    img = img.resize((new_size[0], new_size[1]), Image.LANCZOS)
+    img = img.resize((new_size[0], new_size[1]), resample)
     img = resize_crop(img, size)
     img.format = img_format
     return img
 
 
-def resize_contain(image, size):
+def resize_contain(image, size, resample=Image.LANCZOS):
     """
     Resize image according to size.
     image:      a Pillow image instance
@@ -103,7 +103,7 @@ def resize_contain(image, size):
     """
     img_format = image.format
     img = image.copy()
-    img.thumbnail((size[0], size[1]), Image.LANCZOS)
+    img.thumbnail((size[0], size[1]), resample)
     background = Image.new('RGBA', (size[0], size[1]), (255, 255, 255, 0))
     img_position = (
         int(math.ceil((size[0] - img.size[0]) / 2)),
@@ -115,7 +115,7 @@ def resize_contain(image, size):
 
 
 @validate(_width_is_big_enough)
-def resize_width(image, size):
+def resize_width(image, size, resample=Image.LANCZOS)):
     """
     Resize image according to size.
     image:      a Pillow image instance
@@ -129,13 +129,13 @@ def resize_width(image, size):
     img = image.copy()
     img_size = img.size
     new_height = int(math.ceil((width / img_size[0]) * img_size[1]))
-    img.thumbnail((width, new_height), Image.LANCZOS)
+    img.thumbnail((width, new_height), resample)
     img.format = img_format
     return img
 
 
 @validate(_height_is_big_enough)
-def resize_height(image, size):
+def resize_height(image, size, resample=Image.LANCZOS)):
     """
     Resize image according to size.
     image:      a Pillow image instance
@@ -149,12 +149,12 @@ def resize_height(image, size):
     img = image.copy()
     img_size = img.size
     new_width = int(math.ceil((height / img_size[1]) * img_size[0]))
-    img.thumbnail((new_width, height), Image.LANCZOS)
+    img.thumbnail((new_width, height), resample)
     img.format = img_format
     return img
 
 
-def resize_thumbnail(image, size):
+def resize_thumbnail(image, size, resample=Image.LANCZOS)):
     """
     Resize image according to size.
     image:      a Pillow image instance
@@ -163,7 +163,7 @@ def resize_thumbnail(image, size):
 
     img_format = image.format
     img = image.copy()
-    img.thumbnail((size[0], size[1]), Image.LANCZOS)
+    img.thumbnail((size[0], size[1]), resample)
     img.format = img_format
     return img
 
