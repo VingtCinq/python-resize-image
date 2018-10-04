@@ -1,4 +1,4 @@
-[![python-resize-image v1.1.14 on PyPi](https://img.shields.io/badge/pypi-1.1.14-green.svg)](https://pypi.python.org/pypi/python-resize-image)
+[![python-resize-image v1.1.15 on PyPi](https://img.shields.io/badge/pypi-1.1.15-green.svg)](https://pypi.python.org/pypi/python-resize-image)
 ![MIT license](https://img.shields.io/badge/licence-MIT-blue.svg)
 ![Stable](https://img.shields.io/badge/status-stable-green.svg)
 
