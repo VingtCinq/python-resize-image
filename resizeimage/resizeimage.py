@@ -115,7 +115,7 @@ def resize_contain(image, size, resample=Image.LANCZOS, bg_color=(255, 255, 255,
 
 
 @validate(_width_is_big_enough)
-def resize_width(image, size, resample=Image.LANCZOS)):
+def resize_width(image, size, resample=Image.LANCZOS):
     """
     Resize image according to size.
     image:      a Pillow image instance
@@ -139,7 +139,7 @@ def resize_width(image, size, resample=Image.LANCZOS)):
 
 
 @validate(_height_is_big_enough)
-def resize_height(image, size, resample=Image.LANCZOS)):
+def resize_height(image, size, resample=Image.LANCZOS):
     """
     Resize image according to size.
     image:      a Pillow image instance
@@ -162,7 +162,7 @@ def resize_height(image, size, resample=Image.LANCZOS)):
     return img
 
 
-def resize_thumbnail(image, size, resample=Image.LANCZOS)):
+def resize_thumbnail(image, size, resample=Image.LANCZOS):
     """
     Resize image according to size.
     image:      a Pillow image instance
