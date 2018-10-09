@@ -43,13 +43,13 @@ def _is_big_enough(image, size):
 
 def _width_is_big_enough(image, width):
     """Check that the image width is superior to `width`"""
-    if width >= image.size[0]:
+    if width > image.size[0]:
         raise ImageSizeError(image.size[0], width)
 
 
 def _height_is_big_enough(image, height):
     """Check that the image height is superior to `height`"""
-    if height >= image.size[1]:
+    if height > image.size[1]:
         raise ImageSizeError(image.size[1], height)
 
 
