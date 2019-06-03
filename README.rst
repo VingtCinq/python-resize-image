@@ -1,4 +1,4 @@
-|python-resize-image v1.1.18 on PyPi| |MIT license| |Stable|
+|python-resize-image v1.1.19 on PyPi| |MIT license| |Stable|
 
 A python package to easily resize images
 ========================================
@@ -278,7 +278,7 @@ License
 
 The project is licensed under the MIT License.
 
-.. |python-resize-image v1.1.18 on PyPi| image:: https://img.shields.io/badge/pypi-1.1.18-green.svg
+.. |python-resize-image v1.1.19 on PyPi| image:: https://img.shields.io/badge/pypi-1.1.19-green.svg
    :target: https://pypi.python.org/pypi/python-resize-image
 .. |MIT license| image:: https://img.shields.io/badge/licence-MIT-blue.svg
 .. |Stable| image:: https://img.shields.io/badge/status-stable-green.svg
