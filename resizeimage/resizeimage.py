@@ -26,10 +26,10 @@ def validate(validator):
         """Bound decorator to a particular validator function"""
 
         @wraps(func)
-        def wrapper(image, size, validate=True):
+        def wrapper(image, size, validate=True, *args, **kwargs):
             if validate:
                 validator(image, size)
-            return func(image, size)
+            return func(image, size, *args, **kwargs)
         return wrapper
 
     return decorator
