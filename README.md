@@ -1,4 +1,4 @@
-[![python-resize-image v1.1.19 on PyPi](https://img.shields.io/badge/pypi-1.1.19-green.svg)](https://pypi.python.org/pypi/python-resize-image)
+[![python-resize-image v1.1.20 on PyPi](https://img.shields.io/badge/pypi-1.1.20-green.svg)](https://pypi.python.org/pypi/python-resize-image)
 ![MIT license](https://img.shields.io/badge/licence-MIT-blue.svg)
 ![Stable](https://img.shields.io/badge/status-stable-green.svg)
 
@@ -18,7 +18,7 @@ The following functions are supported:
 
 * `resize_crop` crop the image with a centered rectangle of the specified size.
 * `resize_cover` resize the image to fill the specified area, crop as needed (same behavior as `background-size: cover`).
-* `resize_contain` resize the image so that it can fit in the specified area, keeping the ratio and without crop (same behavior as `background-size: contain`). 
+* `resize_contain` resize the image so that it can fit in the specified area, keeping the ratio and without crop (same behavior as `background-size: contain`).
 * `resize_height` resize the image to the specified height adjusting width to keep the ratio the same.
 * `resize_width` resize the image to the specified width adjusting height to keep the ratio the same.
 * `resize_thumbnail` resize image while keeping the ratio trying its best to match the specified size.
@@ -79,7 +79,7 @@ with open('test-image.jpeg', 'r+b')
 if is_valid:
     with Image.open('test-image.jpeg') as image:
         resizeimage.resize_cover.validate(image, [200, 100], validate=False)
-        cover = resizeimage.resize_cover(image, [200, 100]) 
+        cover = resizeimage.resize_cover(image, [200, 100])
         cover.save('test-image-cover.jpeg', image.format)
 ```
 

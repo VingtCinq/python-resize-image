@@ -1,4 +1,4 @@
-|python-resize-image v1.1.19 on PyPi| |MIT license| |Stable|
+|python-resize-image v1.1.20 on PyPi| |MIT license| |Stable|
 
 A python package to easily resize images
 ========================================
@@ -94,7 +94,7 @@ feature:
     if is_valid:
         with Image.open('test-image.jpeg') as image:
             resizeimage.resize_cover.validate(image, [200, 100], validate=False)
-            cover = resizeimage.resize_cover(image, [200, 100]) 
+            cover = resizeimage.resize_cover(image, [200, 100])
             cover.save('test-image-cover.jpeg', image.format)
 
 Mind the fact that it’s useless to validate the image twice, so we pass
@@ -278,7 +278,7 @@ License
 
 The project is licensed under the MIT License.
 
-.. |python-resize-image v1.1.19 on PyPi| image:: https://img.shields.io/badge/pypi-1.1.19-green.svg
+.. |python-resize-image v1.1.20 on PyPi| image:: https://img.shields.io/badge/pypi-1.1.20-green.svg
    :target: https://pypi.python.org/pypi/python-resize-image
 .. |MIT license| image:: https://img.shields.io/badge/licence-MIT-blue.svg
 .. |Stable| image:: https://img.shields.io/badge/status-stable-green.svg
